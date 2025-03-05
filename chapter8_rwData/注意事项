@@ -1,0 +1,18 @@
+1. bufio.NewReader(os.Stdin)
+2. bufio.NewScanner(os.Stdin)
+
+两者都是读取数据的 但是实际情况中读取的只是文件比如csv的话就是bufio.NewScanner,
+
+3.ioutil.ReadFile(地址) 也是读取文件的 但是读取的是整个文件，用来读取小文件，将读取到的文件放到指定地方的话
+ 就用ioutil.WriteFile(新地址，数据，权限)
+4.比如一些二进制文件不按行划分读取的话可以用带缓冲的方法
+   buf:=make([]byte,1024)   n,err:=bufio.NewReader().Read(buf) if(n==0){break}
+
+5.按列读取文件的话 利用fmt.Fscanln()函数，几行就定义几个切片,每行几个数据就定义几个变量，利用append方法
+ 将每次读取的第一个数据添加到切片1中，第二个数据添加到切片2中，依次类推就可以实现按列读取文件了
+6.filepath 可以跨平台处理文件名和路径
+7.写文件 bufio.NewWriter() .WriteString() 记住最后Flush()  权限是0666
+8.如果写入的文件比较小的话就直接用fmt.Fprint()
+9.打开后记得关闭文件 defer file.Close()  以及写完文件后记得Flush()
+10. 数据结构-->指定格式 序列化
+11. 指定格式-->数据结构 反序列化
