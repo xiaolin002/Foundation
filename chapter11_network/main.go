@@ -9,3 +9,7 @@ func main() {
 	}
 
 }
+
+func sendMessage(msg string) {
+
+}
